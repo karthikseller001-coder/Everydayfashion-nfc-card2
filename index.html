@@ -479,7 +479,10 @@
 
         <h1 class="brand-title" id="brandTitleText">EVERYDAY FASHION</h1>
         <div class="title-underline"></div>
-        <div class="brand-subtitle" id="brandSubtitleText">EXTRAORDINARY STORIES OF SHOPPING EXPERIENCE</div>
+        <div class="brand-subtitle" id="brandSubtitleText">
+          EXTRAORDINARY STORIES OF SHOPPING
+          <span style="display: block; margin-top: 6px;">EXPERIENCE</span>
+        </div>
       </a>
 
       <!-- 4-in-a-Row Gold-Framed Black Squircle Icons Grid -->
@@ -554,14 +557,14 @@
         },
         {
           label: "Instagram",
-          link: "https://instagram.com/your_username",
+          link: "https://www.instagram.com/everdayfashion1?utm_source=qr&xtok=d3Y3OGx1eGtjM3Rk",
           iconUrl: "",
           iconType: "instagram",
           position: 3
         },
         {
           label: "WhatsApp",
-          link: "https://wa.me/919876543210",
+          link: "https://chat.whatsapp.com/GXnZJSbs01V57y4KplmTBV?s=qt&p=a&iam=2",
           iconUrl: "",
           iconType: "whatsapp",
           position: 4
@@ -640,7 +643,15 @@
       const subtitleEl = document.getElementById("brandSubtitleText");
       const bottomTaglineEl = document.getElementById("bottomTaglineText");
       if (titleEl && PORTAL_CONFIG.BRAND_NAME) titleEl.textContent = PORTAL_CONFIG.BRAND_NAME;
-      if (subtitleEl && PORTAL_CONFIG.BRAND_SUBTITLE) subtitleEl.textContent = PORTAL_CONFIG.BRAND_SUBTITLE;
+      if (subtitleEl && PORTAL_CONFIG.BRAND_SUBTITLE) {
+        const subText = PORTAL_CONFIG.BRAND_SUBTITLE;
+        if (subText.toUpperCase().endsWith(" EXPERIENCE")) {
+          const firstPart = subText.slice(0, -" EXPERIENCE".length);
+          subtitleEl.innerHTML = `${firstPart}<span style="display: block; margin-top: 6px;">EXPERIENCE</span>`;
+        } else {
+          subtitleEl.textContent = subText;
+        }
+      }
       if (bottomTaglineEl && PORTAL_CONFIG.BOTTOM_TAGLINE) bottomTaglineEl.textContent = PORTAL_CONFIG.BOTTOM_TAGLINE;
 
       // Set Custom Logo if provided
